@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
@@ -23,9 +24,11 @@ export default function RootLayout({
 			lang='en'
 			suppressHydrationWarning>
 			<head />
-			<body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
-				{children}
-			</body>
+			<ThirdwebProvider activeChain={ChainId.BinanceSmartChainTestnet}>
+				<body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
+					{children}
+				</body>
+			</ThirdwebProvider>
 		</html>
 	);
 }
